@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MapEnIOs" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +17,68 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" rotateEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PMW-SK-2gT">
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="qqw-4F-EiN"/>
+                                </connections>
+                            </mapView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zni-Z3-ywY">
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MapKit en IOs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iTK-Fm-9JF">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="VsI-5u-s1e"/>
+                                            <constraint firstAttribute="height" constant="21" id="X6O-qP-zdT"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.66109913789999997" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="iTK-Fm-9JF" firstAttribute="centerX" secondItem="Zni-Z3-ywY" secondAttribute="centerX" id="K4T-nF-9o2"/>
+                                    <constraint firstAttribute="height" constant="60" id="QN0-04-qYj"/>
+                                    <constraint firstItem="iTK-Fm-9JF" firstAttribute="centerY" secondItem="Zni-Z3-ywY" secondAttribute="centerY" id="hLa-J1-CW6"/>
+                                </constraints>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="MNC-06-EcL">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="Bct-yw-nRQ"/>
+                                    <constraint firstAttribute="width" constant="221" id="p9E-BF-LIQ"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="standard"/>
+                                    <segment title="satelite"/>
+                                    <segment title="híbrido"/>
+                                </segments>
+                                <color key="tintColor" red="1" green="0.66109913789999997" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="mapValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="vri-B4-Gph"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PMW-SK-2gT" secondAttribute="bottom" id="MI5-HU-pls"/>
+                            <constraint firstItem="Zni-Z3-ywY" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ZCR-F2-hra"/>
+                            <constraint firstItem="PMW-SK-2gT" firstAttribute="top" secondItem="Zni-Z3-ywY" secondAttribute="bottom" id="Zso-aL-hlA"/>
+                            <constraint firstItem="MNC-06-EcL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="e5D-lq-dUx"/>
+                            <constraint firstAttribute="trailing" secondItem="Zni-Z3-ywY" secondAttribute="trailing" id="eA3-1K-RW8"/>
+                            <constraint firstItem="Zni-Z3-ywY" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="ero-kD-yE1"/>
+                            <constraint firstAttribute="trailing" secondItem="PMW-SK-2gT" secondAttribute="trailing" id="kKy-FV-2R0"/>
+                            <constraint firstItem="PMW-SK-2gT" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="rF7-uy-bS1"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="MNC-06-EcL" secondAttribute="bottom" constant="20" id="w7f-By-upt"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="PMW-SK-2gT" id="NK5-PD-T0P"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="117.59999999999999" y="122.78860569715144"/>
         </scene>
     </scenes>
 </document>
